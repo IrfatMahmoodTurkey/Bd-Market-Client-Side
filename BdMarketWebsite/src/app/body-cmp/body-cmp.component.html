@@ -1,0 +1,102 @@
+<div class="container dark-grey-text mt-5" style="padding-top: 70px">
+
+    <!--Grid row-->
+    <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+           <img [src]="imageUrl" class="img-fluid"/>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+            <!--Content-->
+            <div class="p-4">
+                <h1 class="lead">
+                    {{itemName}}
+                </h1>
+
+                <div class="mb-3">
+                     <span class="badge purple mr-1">{{categoryName}}</span>
+                </div>
+
+                <p class="lead" id="sell_portion">
+                    <span>{{productPrice}}&#x9f3;</span>
+                </p>
+
+                <p class="lead font-weight-bold">Description</p>
+
+                <p>{{description}}</p>
+
+                <form class="d-flex justify-content-left" [formGroup]="formData" (ngSubmit)="add_cart(formData.value)">
+                    <!-- Default input -->
+                    <input type="number" min="1" max="1000" class="form-control" style="width: 100px" formControlName="quantity">
+                    <button class="btn btn-primary btn-md my-0 p" type="submit">Add to cart
+                        <i class="fas fa-shopping-cart ml-1"></i>
+                    </button>
+                </form>
+
+            </div>
+            <!--Content-->
+
+        </div>
+        <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+
+    <hr>
+
+    <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5" id="top_navigation">
+
+        <!-- Navbar brand -->
+        <span class="navbar-brand">Related Items</span>
+
+    </nav>
+    <div class="row wow fadeIn">
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4" *ngFor="let i of related_items">
+
+            <!--Card-->
+            <div class="card" style="height: 400px;">
+
+                <!--Card image-->
+                <div class="view overlay">
+                    <img [src]=getSanitizerUrl(i.pictureUrl) class="card-img-top" alt="" style="height:250px; width: 100%;">
+                    <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+                <!--Card image-->
+
+                <!--Card content-->
+                <div class="card-body text-center">
+                    <!--Category & Title-->
+                    <a class="grey-text">
+                        <h5>{{i.categoryName}}</h5>
+                    </a>
+                    <h5>
+                        <strong>
+                            <h5 class="dark-grey-text">{{i.productTitle}}
+                            </h5>
+                        </strong>
+                    </h5>
+
+                    <h4 class="font-weight-bold" id="sell_portion">
+                        <strong>$ {{i.sellPrice}}&#x9f3;</strong>
+                    </h4>
+
+                    <a class="btn btn-default" [routerLink]="['/related',i.id]">View Details >></a>
+                </div>
+                <!--Card content-->
+
+            </div>
+            <!--Card-->
+
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

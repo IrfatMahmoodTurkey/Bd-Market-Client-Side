@@ -1,0 +1,63 @@
+<!-- Navbar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar" id="navigation">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand waves-effect" [routerLink]="['']">
+        <strong style="color: #004D40;"><img src="../../assets/logo/bd_market_icon.png" height="30px" width="50px"/> BD Market</strong>
+      </a>
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+          <li routerLinkActive="nav-item active">
+            <a class="nav-link waves-effect" [routerLink]="['']"><i class="fas fa-home"></i> Home
+            </a>
+          </li>
+          <li routerLinkActive="nav-item active">
+            <a class="nav-link waves-effect" [routerLink]="['allProduct']"><i class="fas fa-boxes"></i> All Products</a>
+          </li>
+          <li routerLinkActive="nav-item active">
+            <a class="nav-link waves-effect" [routerLink]="['category']"><i class="fas fa-sitemap"></i> Categorize</a>
+          </li>
+        </ul>
+
+        <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">
+          <li routerLinkActive="nav-item active">
+              <a [routerLink]='["cart"]' class="nav-link waves-effect"><i class="fas fa-shopping-cart"></i> Cart </a>
+          </li>
+          <li routerLinkActive="nav-item active">
+            <a href="https://www.facebook.com/" class="nav-link waves-effect" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          </li>
+          <li routerLinkActive="nav-item active">
+            <a href="https://twitter.com/" class="nav-link waves-effect" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li routerLinkActive="nav-item active">
+            <a [routerLink]="['profile']" class="nav-link waves-effect">
+              <i class="fas fa-user-circle"></i> Account
+            </a>
+          </li>
+          <li routerLinkActive="nav-item active">
+              <a [routerLink]="['register']" class="nav-link waves-effect">
+                <i class="fas fa-user"></i> Register
+              </a>
+            </li>
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>

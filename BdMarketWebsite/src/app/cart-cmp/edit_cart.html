@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Edit Or Remove Product</h1>
+<div mat-dialog-content>
+    <input value="1" [(ngModel)]="quantity" type="number" max="100" min="1" placeholder="Enter the quantity" class="form-control" style="width: 100%"/>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="quantity" cdkFocusInitial>Edit</button>
+  <button mat-button [mat-dialog-close]="-50" cdkFocusInitial>Remove</button>
+  <button mat-button (click)="onNoClick()">Close</button>
+</div>

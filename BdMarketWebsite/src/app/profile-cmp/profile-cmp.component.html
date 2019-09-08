@@ -1,0 +1,77 @@
+<div class="container dark-grey-text mt-5" style="padding-top: 50px">
+    <h1>{{data.userName}}</h1>
+    <p>{{data.email}}</p>
+    <button class="btn btn-default" (click)="logout()">Log Out</button>
+    <hr>
+    
+    <div class="row">
+        <div class="col-md-8">
+            <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5" id="top_navigation">
+
+                <!-- Navbar brand -->
+                <span class="navbar-brand">All Orders</span>
+            </nav>
+
+            <div class="card-body pre-scrollable">
+                <div class="card" *ngFor="let i of orderDataSource" style="width: 100%; margin:15px; padding:10px;">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-horizontal">
+                                <p>Name: {{i.firstName}} {{i.lastName}}</p>
+                                <p>Email: {{i.email}}</p>
+                                <p>Phone: {{i.phone}}</p>
+                                <p>Address One: {{i.addressOne}}</p>
+                                <p>Address Two: {{i.addressTwo}}</p>
+                                <p>Date: {{i.actionTime}}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                                <div *ngFor="let j of i.orderItemViewModels">
+                                        <p>Item Name: {{j.productName}}</p>
+                                        <p>Category Name: {{j.categoryName}}</p>
+                                        <p>Quantity: {{j.quantity}}</p>
+                                        <p>Price: {{j.productPrice}}</p>
+                                        <p>Order ID: {{j.orderId}}</p>
+                                        <p><button class="btn btn-default" (click)="remove_item(j.orderItemId)">Remove
+                                                Item</button></p>
+                                        <hr>
+                                </div>
+                        </div>
+                        <hr/>
+                    </div>
+                    <button class="btn btn-default" (click)="remove_order(i.infoId)">Remove Order</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5" id="top_navigation">
+
+                <!-- Navbar brand -->
+                <span class="navbar-brand">Change Password</span>
+            </nav>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <form [formGroup]="passwordData" (ngSubmit)="changePassword(passwordData.value)">
+                        <mat-form-field class="example-full-width" style="width: 100%;">
+                            <input matInput placeholder="Enter Your Old Password" type="password"
+                                formControlName="oldPassword">
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width" style="width: 100%;">
+                            <input matInput placeholder="Enter Your New Password" type="password"
+                                formControlName="newPassword">
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width" style="width: 100%;">
+                            <input matInput placeholder="Re Enter Your New Password" type="password"
+                                formControlName="rePassword">
+                        </mat-form-field>
+
+                        <button type="submit" class="btn btn-default" style="width: 100%" [disabled]="!passwordData.valid">Change</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

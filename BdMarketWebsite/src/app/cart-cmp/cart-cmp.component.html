@@ -1,0 +1,142 @@
+<main class="mt-5 pt-4">
+    <div class="container wow fadeIn">
+
+      <!-- Heading -->
+      <h2 class="my-5 h2 text-center">Cart</h2>
+
+      <!--Grid row-->
+      <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-8 mb-4">
+
+          <!--Card-->
+          <form [formGroup]="formData" (ngSubmit)="orderItem(formData.value)">
+          <div class="card">
+
+            <!--Card content-->
+            <div class="card-body">
+
+              <!--Grid row-->
+              <div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-6 mb-2">
+
+                  <!--firstName-->
+                  <div class="md-form ">
+                    <input type="text" id="firstName" class="form-control" formControlName="fname">
+                    <label for="firstName" class="">First name (Must Needed)</label>
+                  </div>
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-md-6 mb-2">
+
+                  <!--lastName-->
+                  <div class="md-form">
+                    <input type="text" id="lastName" class="form-control" formControlName="lname">
+                    <label for="lastName" class="">Last name (Must Needed)</label>
+                  </div>
+
+                </div>
+                <!--Grid column-->
+
+              </div>
+              <!--Grid row-->
+
+              <!--email-->
+              <div class="md-form mb-5">
+                <input type="text" id="email" class="form-control" formControlName="email">
+                <label for="email" class="">Email (optional)</label>
+              </div>
+
+              <!-- phone -->
+              <div class="md-form mb-5">
+                <input type="text" id="email" class="form-control" formControlName="phone">
+                <label for="email" class="">Phone (Must Needed)</label>
+              </div>
+
+              <!--address-->
+              <div class="md-form mb-5">
+                <input type="text" id="address" class="form-control" formControlName="address1">
+                <label for="address" class="">Address (Must Needed)</label>
+              </div>
+
+              <!--address-2-->
+              <div class="md-form mb-5">
+                <input type="text" id="address-2" class="form-control" formControlName="address2">
+                <label for="address-2" class="">Address 2 (optional)</label>
+              </div>
+
+              <div class="md-form mb-5">
+                  <mat-label>Select Place (Must needed)</mat-label>
+                  <mat-select formControlName="deliveryInfo" name="delivery">
+                    <mat-option *ngFor="let i of deliveryInfo" [value]="i.id">
+                      Place: {{i.placeName}}
+                      ||
+                      Charge: {{i.charge}}&#x9f3;
+                      ||
+                      Charge will be added with total amount if requested for home delivery
+                    </mat-option>
+                  </mat-select>
+              </div>
+
+              <mat-checkbox formControlName="deliveryConfirmation">Home Delivery?</mat-checkbox>
+
+
+              <hr>
+              <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]='!formData.valid'>Order</button>
+
+            </div>
+
+          </div>
+        </form>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-4 mb-4">
+
+          <!-- Heading -->
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Your cart</span>
+            <span class="badge badge-secondary badge-pill">{{cart_num}}</span>
+          </h4>
+
+          <!-- Cart -->
+          <ul class="list-group mb-3 z-depth-1" *ngFor="let i of cart; let pos = index">
+            <li class="list-group-item d-flex justify-content-between lh-condensed" (click)="openDialog(pos)" title="Click for Edit Quantity or Remove Item">
+              <div>
+                <h6 class="my-0">{{i.productName}}</h6>
+                <small class="text-muted">Quantity: {{i.quantity}}</small>
+                <br>
+                <small class="text-muted" style="cursor: pointer;">Click to Edit Quantity or Remove Item</small>
+              </div>
+              <span class="text-muted">Price: {{i.productPrice}}&#x9f3;</span>
+            </li>
+          </ul>
+          <div class="list-group-item d-flex justify-content-between">
+            <span>Total</span>
+            <strong>{{total_price}}&#x9f3;</strong>
+          </div>
+          <!-- Cart -->
+
+          <!-- Promo code -->
+          <div class="card p-2">
+                <button class="btn btn-secondary btn-md waves-effect m-0" style="width: 100%" type="button" [disabled]="!isRemoveEnable" (click)="remove_all_cart()">Remove all from Cart</button>             
+          </div>
+          <!-- Promo code -->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+    </div>
+  </main>

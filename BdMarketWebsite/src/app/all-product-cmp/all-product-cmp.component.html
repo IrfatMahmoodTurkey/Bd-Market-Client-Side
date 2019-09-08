@@ -1,0 +1,50 @@
+<div class="container" style="padding-top: 70px">
+    <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5" id="top_navigation">
+
+        <!-- Navbar brand -->
+        <span class="navbar-brand">All Products</span>
+        <input class="form-control" #searchInput placeholder="Search" style="float: right; width: 35%" (input)="search(searchInput.value)"/>
+    </nav>
+    <div class="row wow fadeIn">
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4" *ngFor="let i of all_data">
+
+            <!--Card-->
+            <div class="card" style="height: 400px;">
+
+                <!--Card image-->
+                <div class="view overlay">
+                    <img [src]=getSantizeUrl(i.pictureUrl) class="card-img-top" alt="" style="height:180px; width: 250px;">
+                    <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+                <!--Card image-->
+
+                <!--Card content-->
+                <div class="card-body text-center">
+                    <!--Category & Title-->
+                    <a class="grey-text">
+                        <h5>{{i.categoryName}}</h5>
+                    </a>
+                    <h5>
+                        <strong>
+                            <h5 class="dark-grey-text">{{i.productTitle}}
+                            </h5>
+                        </strong>
+                    </h5>
+
+                    <h4 class="font-weight-bold" id="sell_portion">
+                        <strong>{{i.sellPrice}}&#x9f3;</strong>
+                    </h4>
+                    
+                    <a class="btn btn-default" [routerLink]="['details', i.id]">View Details >></a>
+                </div>
+                <!--Card content-->
+
+            </div>
+            <!--Card-->
+
+        </div>
+    </div>
+</div>
